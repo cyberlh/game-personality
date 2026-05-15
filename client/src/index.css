@@ -43,3 +43,18 @@ body {
 .neon-glow {
   text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
 }
+
+/* Touch optimization */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px;
+  }
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* Safe area for notched phones */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
