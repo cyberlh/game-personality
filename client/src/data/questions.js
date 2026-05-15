@@ -1,0 +1,134 @@
+export const questions = [
+  { id: 1, text: '周末晚上打开电脑/手机，你最想做什么？', options: [
+    { label: 'A', text: '挑战公认最难的那款，"今天非把它拿下不可"', scores: { shouku: 3, tianti: 1 } },
+    { label: 'B', text: '潜入一个开放世界，地图上每个"?"都踩一遍', scores: { saibo: 3, laoe: 1 } },
+    { label: 'C', text: '约上固定车队，语音一开就是快乐星球', scores: { yuyin: 3, tianliang: 1 } },
+    { label: 'D', text: '开一局策略游戏，"就玩一回合"', scores: { tianliang: 3, shouku: 1 } }
+  ]},
+  { id: 2, text: '游戏中最让你爽到的瞬间是什么？', options: [
+    { label: 'A', text: '排位决胜局1v3残血反杀，全场扣6', scores: { tianti: 3, shouku: 1 } },
+    { label: 'B', text: '完美产线跑通那一刻，所有数据精准对齐', scores: { chanxian: 3, fangkuai: 1 } },
+    { label: 'C', text: '自己造的建筑被路过玩家截图发帖"这是怎么做到的"', scores: { fangkuai: 3, chanxian: 1 } },
+    { label: 'D', text: '十连三黄蛋，截图发群引爆全群羡慕', scores: { liusiBa: 3, cangshu: 1 } }
+  ]},
+  { id: 3, text: '哪种游戏成就最让你满足？', options: [
+    { label: 'A', text: '无伤通关/最高难度/Boss连战全通', scores: { shouku: 3, tianti: 1 } },
+    { label: 'B', text: '用精妙的战术体系在多人对战中以智取胜', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'C', text: '造出被社区广泛采用的蓝图/攻略/配装方案', scores: { chanxian: 3, fangkuai: 1 } },
+    { label: 'D', text: '零氪全通最难副本，截图发论坛"零氪党的胜利"', scores: { gandi: 3, tianti: 1 } }
+  ]},
+  { id: 4, text: '魂类游戏 Boss 连死 20 次，你会？', options: [
+    { label: 'A', text: '研究招式规律，制定精确对策，"这次一定过"', scores: { tianliang: 3, shouku: 1 } },
+    { label: 'B', text: '越死越兴奋，"再来！这把感觉对了"', scores: { shouku: 3, tianti: 1 } },
+    { label: 'C', text: '检查装备/配装/等级，一定有优化空间', scores: { tianti: 3, chanxian: 1 } },
+    { label: 'D', text: '太难了换游戏——时间宝贵，不受这气', scores: { laoe: 3, yuyin: 1 } }
+  ]},
+  { id: 5, text: '肉鸽类"死后重来"的循环，你什么感受？', options: [
+    { label: 'A', text: '每局全新策略组合，我要试遍所有套路流派', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'B', text: '每次重来都能发现新内容，探索本身就是快乐', scores: { saibo: 3, shouku: 1 } },
+    { label: 'C', text: '攒永久升级，看着自己越来越强的成长感太上头', scores: { gandi: 3, tianti: 1 } },
+    { label: 'D', text: '重复打同样的内容好无聊，不如玩有结局的游戏', scores: { laoe: 3, yuyin: 1 } }
+  ]},
+  { id: 6, text: '你更偏好哪种难度曲线？', options: [
+    { label: 'A', text: '策略深度递增——越想越深，越玩越复杂，上限极高', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'B', text: '高开高走——上来就挑战我，挫败后成长最甜美', scores: { shouku: 3, tianti: 1 } },
+    { label: 'C', text: '适中——有难度但不卡关，我有自己的节奏', scores: { saibo: 3, fangkuai: 1 } },
+    { label: 'D', text: '低压力——最好能调难度，游戏不该制造焦虑', scores: { laoe: 3, cangshu: 1 } }
+  ]},
+  { id: 7, text: '你如何看待"死亡惩罚"（掉魂/掉装备/跑尸/删档）？', options: [
+    { label: 'A', text: '合理的设计，让每一次决策更有分量', scores: { shouku: 3, tianliang: 1 } },
+    { label: 'B', text: '紧张感拉满，这才是沉浸式冒险该有的代价', scores: { saibo: 3, tianti: 1 } },
+    { label: 'C', text: '死就死了，蹲下一把——活着最重要', scores: { laoliu: 3, laoe: 1 } },
+    { label: 'D', text: '太不友好了，游戏应该是放松的', scores: { laoe: 3, cangshu: 1 } }
+  ]},
+  { id: 8, text: '你对游戏内语音/开麦的态度？', options: [
+    { label: 'A', text: '必要工具——快速沟通战术，精简短句不废话', scores: { tianliang: 3, tianti: 1 } },
+    { label: 'B', text: '可有可无——我更喜欢独自沉浸在自己的世界', scores: { chanxian: 3, shouku: 1 } },
+    { label: 'C', text: '必须开！聊天才是游戏的 80% 乐趣', scores: { yuyin: 3, fangkuai: 1 } },
+    { label: 'D', text: '社恐福音——打字就够，能不打字更好', scores: { laoliu: 3, laoe: 1 } }
+  ]},
+  { id: 9, text: '多人游戏中，你通常是什么角色？', options: [
+    { label: 'A', text: '战术指挥——分析局势、制定打法、分配任务', scores: { tianliang: 3, tianti: 1 } },
+    { label: 'B', text: 'Carry位——我来杀穿对面，你们保我就行', scores: { tianti: 3, shouku: 1 } },
+    { label: 'C', text: '气氛组——段子手+DJ，让全队笑着赢（或笑着输）', scores: { yuyin: 3, tianliang: 1 } },
+    { label: 'D', text: '辅助/后勤——默默补资源/造装备，队友在前线冲锋', scores: { fangkuai: 3, chanxian: 1 } }
+  ]},
+  { id: 10, text: '朋友拉你玩一款完全没接触过的游戏类型，你会？', options: [
+    { label: 'A', text: '先看攻略/百科/教学视频，做足功课再上手', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'B', text: '直接开玩！摸索本身就是乐趣，"别剧透我"', scores: { saibo: 3, shouku: 1 } },
+    { label: 'C', text: '来者不拒——朋友玩什么我就玩什么，游戏是其次', scores: { yuyin: 3, fangkuai: 1 } },
+    { label: 'D', text: '如果太复杂/太肝就算了，推荐他们玩我的游戏', scores: { laoe: 3, yuyin: 1 } }
+  ]},
+  { id: 11, text: '你更喜欢哪种游戏世界？', options: [
+    { label: 'A', text: '精密的箱庭关卡——每条捷径、每扇"无法从这一侧打开"的门都是艺术', scores: { shouku: 3, saibo: 1 } },
+    { label: 'B', text: '广袤的开放世界——"看到那座山了吗？你可以爬上去"', scores: { saibo: 3, fangkuai: 1 } },
+    { label: 'C', text: '可改造的沙盒——世界是我的画布，一砖一瓦由我决定', scores: { fangkuai: 3, chanxian: 1 } },
+    { label: 'D', text: '不需要世界——给我一张对战地图/一局排位就够了', scores: { tianti: 3, yuyin: 1 } }
+  ]},
+  { id: 12, text: '你更喜欢哪种叙事方式？', options: [
+    { label: 'A', text: '碎片化叙事（魂类）——从物品描述、环境细节拼凑故事', scores: { shouku: 3, saibo: 1 } },
+    { label: 'B', text: '分支选择（经典角色扮演）——我的选择真正影响世界走向', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'C', text: '玩家自创故事——和朋友们在游戏中即兴创造的回忆', scores: { yuyin: 3, fangkuai: 1 } },
+    { label: 'D', text: '线性叙事——像看一部好电影，沉浸不费脑', scores: { laoe: 3, cangshu: 1 } }
+  ]},
+  { id: 13, text: '你心目中的"神作"更接近哪一款？', options: [
+    { label: 'A', text: '只狼/艾尔登法环——"战胜 Boss 那一刻，手在抖"', scores: { shouku: 3, saibo: 1 } },
+    { label: 'B', text: '文明7/杀戮尖塔2——"再玩一回合，真的最后一回合"', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'C', text: '赛博朋克2077/荒野大镖客2——"通关后像失恋了一样"', scores: { saibo: 3, shouku: 1 } },
+    { label: 'D', text: '异星工厂/戴森球计划——"我妈问我为什么凌晨在画传送带"', scores: { chanxian: 3, fangkuai: 1 } }
+  ]},
+  { id: 14, text: '"肝"和"氪"，你更倾向哪一种？', options: [
+    { label: 'A', text: '该氪就氪，时间比钱值钱——648走你', scores: { liusiBa: 3, cangshu: 1 } },
+    { label: 'B', text: '肝就完了——穷得只剩时间了，命就是游戏币', scores: { gandi: 3, tianti: 1 } },
+    { label: 'C', text: '都不选——适度游戏，过量伤肝又伤钱包', scores: { laoe: 3, laoliu: 1 } },
+    { label: 'D', text: '不肝不氪——但我攒了10万免费钻，策划都怕我', scores: { cangshu: 3, gandi: 1 } }
+  ]},
+  { id: 15, text: '你如何看待游戏中的"刷刷刷"？', options: [
+    { label: 'A', text: '接受，前提是刷的路线/效率需要策略规划', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'B', text: '探索顺带刷可以，纯重复刷没意思——除非风景好', scores: { saibo: 3, laoe: 1 } },
+    { label: 'C', text: '为了建造/制作我愿意刷——材料是作品的血肉', scores: { fangkuai: 3, chanxian: 1 } },
+    { label: 'D', text: '任何形式的"刷"都想弃游——时间太宝贵了', scores: { laoe: 3, cangshu: 1 } }
+  ]},
+  { id: 16, text: '你对 Mod / 创意工坊的态度？', options: [
+    { label: 'A', text: '策略/深度向 Mod——新文明/新卡牌/新机制，扩展上限', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'B', text: '效率向 Mod——自动化插件、数据统计、一键整理', scores: { chanxian: 3, tianliang: 1 } },
+    { label: 'C', text: '语音/社交向 Mod——更多表情动作、更好的开黑体验', scores: { yuyin: 3, fangkuai: 1 } },
+    { label: 'D', text: '皮肤/美化向 Mod——抽不到的老婆就靠 Mod 了', scores: { liusiBa: 3, cangshu: 1 } }
+  ]},
+  { id: 17, text: '如果要花 1000 小时在一款游戏上，你希望花在什么上面？', options: [
+    { label: 'A', text: '磨练技术——从被碾压到无伤通关的蜕变', scores: { shouku: 3, tianti: 1 } },
+    { label: 'B', text: '深度钻研——吃透每一层策略、每一个隐藏机制', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'C', text: '建造奇观——一座让所有人瞠目结舌的史诗级作品', scores: { fangkuai: 3, yuyin: 1 } },
+    { label: 'D', text: '全图鉴收集——每一个角色/每一张卡，一个都不能少', scores: { cangshu: 3, liusiBa: 1 } }
+  ]},
+  { id: 18, text: '你获得一台"完全沉浸式虚拟现实游戏舱"，第一件事？', options: [
+    { label: 'A', text: '进入奇幻开放世界，独自踏上史诗级冒险', scores: { saibo: 3, shouku: 1 } },
+    { label: 'B', text: '进入最大的虚拟社交广场，找朋友一起疯', scores: { yuyin: 3, fangkuai: 1 } },
+    { label: 'C', text: '建一座现实中不可能存在的浮空城市', scores: { fangkuai: 3, chanxian: 1 } },
+    { label: 'D', text: '把所有虚拟道具分类收纳进不同仓库，标签对齐', scores: { cangshu: 3, chanxian: 1 } }
+  ]},
+  { id: 19, text: '一天只剩 30 分钟打游戏，你会？', options: [
+    { label: 'A', text: '开一局肉鸽/策略，"一局只要 30 分钟"（骗自己）', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'B', text: '上线签个到，看看风景，浇浇花，摸摸宠物——够了', scores: { laoe: 3, saibo: 1 } },
+    { label: 'C', text: '排一把竞技——赢了美滋滋下线，输了"不行再来一把"', scores: { tianti: 3, shouku: 1 } },
+    { label: 'D', text: '蹲一把撤离，苟到最后成功撤离——这 30 分钟值了', scores: { laoliu: 3, gandi: 1 } }
+  ]},
+  { id: 20, text: '游戏输了/被虐了，你的第一反应？', options: [
+    { label: 'A', text: '"再来！这次我一定躲过那一招"——复盘→练习→再战', scores: { shouku: 3, tianti: 1 } },
+    { label: 'B', text: '"这游戏的深度比我想象的深"——换思路/换套路再来', scores: { tianliang: 3, chanxian: 1 } },
+    { label: 'C', text: '"我的我的，下把打回来"——秒排下一局，不服就干', scores: { tianti: 3, yuyin: 1 } },
+    { label: 'D', text: '输了就输了呗——切出去看视频/刷手机/换个轻松的游戏', scores: { laoe: 3, laoliu: 1 } }
+  ]}
+]
+
+export function validateBalance() {
+  const counts = {}
+  questions.forEach(q => {
+    q.options.forEach(opt => {
+      Object.entries(opt.scores).forEach(([type, score]) => {
+        if (score === 3) counts[type] = (counts[type] || 0) + 1
+      })
+    })
+  })
+  return counts
+}
