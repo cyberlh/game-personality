@@ -288,7 +288,16 @@ export function selectFocusedQuestions(scores, questionsPerCluster = 3) {
     }
   }
 
-  const selected = top.slice(0, 2)
+  // 确保至少选 2 个聚类
+  let selected = top.slice(0, 2)
+  if (selected.length < 2) {
+    for (const [cluster] of sorted) {
+      if (!selected.includes(cluster)) {
+        selected.push(cluster)
+        if (selected.length >= 2) break
+      }
+    }
+  }
   const focused = []
   for (const cluster of selected) {
     const pool = questions.filter(q => q.stage === 'focused' && q.cluster === cluster)
