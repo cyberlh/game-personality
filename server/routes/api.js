@@ -42,23 +42,22 @@ router.post('/submit', (req, res) => {
     scores[key] = 0
   }
 
-  // Calculate scores from answers
+  // Calculate scores from answers (Likert: value 1-5, weight = (value-1)/4)
   for (const answer of answers) {
     const question = questions.find(q => q.id === answer.questionId)
     if (!question) continue
-    const option = question.options[answer.optionIndex]
-    if (!option) continue
-    for (const [type, points] of Object.entries(option.scores)) {
-      scores[type] = (scores[type] || 0) + points
+    const weight = (answer.value - 1) / 4
+    for (const [type, points] of Object.entries(question.scores)) {
+      scores[type] = (scores[type] || 0) + points * weight
     }
   }
 
   // Sort scores descending
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1])
 
-  // Determine result type (handle ties: if top two within 2 points, create hybrid)
+  // Determine result type (handle ties: if top two within 1 point, create hybrid)
   let resultType
-  if (sorted.length >= 2 && sorted[0][1] - sorted[1][1] <= 2) {
+  if (sorted.length >= 2 && sorted[0][1] - sorted[1][1] <= 1) {
     resultType = `${sorted[0][0]}_${sorted[1][0]}`
   } else {
     resultType = sorted[0][0]

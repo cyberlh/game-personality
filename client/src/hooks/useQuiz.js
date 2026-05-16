@@ -8,14 +8,15 @@ const INIT_SCORES = {
   laoliu: 0, gandi: 0, laoe: 0, cangshu: 0,
 }
 
-const SCREENING_COUNT = 6
-const FOCUSED_PER_CLUSTER = 3
+const SCREENING_COUNT = 12
+const FOCUSED_PER_CLUSTER = 5
 const TOTAL_EXPECTED = SCREENING_COUNT + FOCUSED_PER_CLUSTER * 2
 
 function computeResult(scores) {
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1])
   let resultType
-  if (sorted.length > 1 && sorted[0][1] - sorted[1][1] <= 2) {
+  // Tighter tolerance for Likert scores (smaller numbers)
+  if (sorted.length > 1 && sorted[0][1] - sorted[1][1] <= 1) {
     resultType = `${sorted[0][0]}_${sorted[1][0]}`
   } else {
     resultType = sorted[0][0]
@@ -49,18 +50,19 @@ export default function useQuiz() {
     setResult(null)
   }, [])
 
-  const selectAnswer = useCallback((optionIndex) => {
+  const selectAnswer = useCallback((value) => {
     if (transitioning || !question) return
-    setSelectedOption(optionIndex)
+    setSelectedOption(value)
     setTransitioning(true)
 
-    const option = question.options[optionIndex]
-    const newAnswers = [...answers, { questionId: question.id, optionIndex }]
+    // Value is 1-5 → weight 0, 0.25, 0.5, 0.75, 1
+    const weight = (value - 1) / 4
+    const newAnswers = [...answers, { questionId: question.id, value }]
     setAnswers(newAnswers)
 
     const newScores = { ...scores }
-    Object.entries(option.scores).forEach(([type, score]) => {
-      newScores[type] = (newScores[type] || 0) + score
+    Object.entries(question.scores).forEach(([type, score]) => {
+      newScores[type] = (newScores[type] || 0) + score * weight
     })
     setScores(newScores)
 
@@ -68,7 +70,6 @@ export default function useQuiz() {
       const isLastInQueue = questionIndex >= questionQueue.length - 1
 
       if (isLastInQueue && isScreeningPhase) {
-        // Expand queue with focused questions based on screening scores
         const focused = selectFocusedQuestions(newScores, FOCUSED_PER_CLUSTER)
         if (focused.length > 0) {
           setQuestionQueue(prev => [...prev, ...focused])
@@ -84,7 +85,6 @@ export default function useQuiz() {
         setSelectedOption(null)
         setTransitioning(false)
       } else {
-        // Quiz complete — compute final result
         const finalResult = computeResult(newScores)
         setResult(finalResult)
         setScreen('result')
@@ -95,7 +95,7 @@ export default function useQuiz() {
           body: JSON.stringify({ answers: newAnswers }),
         }).catch(() => {})
       }
-    }, 500)
+    }, 300)
   }, [question, questionIndex, questionQueue, answers, scores, transitioning, isScreeningPhase])
 
   const goBack = useCallback(() => {

@@ -33,7 +33,7 @@ export default function Landing({ onStart, onStats }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          12 种 Meme 人格 · 12 题精准定位
+          12 种 Meme 人格 · 22 题精准定位
         </motion.div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight">
           <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent shiny-text">
@@ -41,7 +41,7 @@ export default function Landing({ onStart, onStats }) {
           </span>
         </h1>
         <p className="text-slate-500 text-sm sm:text-base">
-          6 道筛选 + 6 道深度分析，比你自己更懂你的玩家本性
+          12 道筛选 + 10 道深度分析，每题仅需选择同意程度
         </p>
       </motion.div>
 
@@ -60,6 +60,27 @@ export default function Landing({ onStart, onStats }) {
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600
             blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse" />
         </button>
+      </motion.div>
+
+      {/* How it works */}
+      <motion.div variants={item} className="mt-6 flex items-center gap-4 text-xs text-slate-600">
+        <div className="flex items-center gap-1">
+          <span className="text-purple-400/60 font-mono text-sm">"</span>
+          <span>阅读陈述</span>
+        </div>
+        <span className="text-slate-700">→</span>
+        <div className="flex items-center gap-2">
+          <span className="text-slate-500">1</span>
+          <span className="text-slate-500 text-[10px]">完全不同意</span>
+          <span className="w-12 h-px bg-white/10" />
+          <span className="text-slate-500 text-[10px]">完全同意</span>
+          <span className="text-slate-500">5</span>
+        </div>
+        <span className="text-slate-700">→</span>
+        <div className="flex items-center gap-1">
+          <span>查看结果</span>
+          <span className="text-cyan-400/60 font-mono text-sm">"</span>
+        </div>
       </motion.div>
 
       {/* Stats badge */}
