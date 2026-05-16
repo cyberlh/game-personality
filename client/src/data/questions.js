@@ -1,134 +1,317 @@
+export const CLUSTERS = {
+  challenge: { name: '挑战/硬核', types: ['shouku', 'tianti'] },
+  strategy: { name: '策略/规划', types: ['tianliang', 'chanxian'] },
+  explore: { name: '探索/建造', types: ['saibo', 'fangkuai'] },
+  social: { name: '社交/语音', types: ['yuyin', 'laoliu'] },
+  collect: { name: '收集/消费', types: ['liusiBa', 'cangshu', 'gandi'] },
+  casual: { name: '休闲/佛系', types: ['laoe'] },
+}
+
 export const questions = [
-  { id: 1, text: '周末晚上打开电脑/手机，你最想做什么？', options: [
-    { label: 'A', text: '挑战公认最难的那款，"今天非把它拿下不可"', scores: { shouku: 3, tianti: 1 } },
-    { label: 'B', text: '潜入一个开放世界，地图上每个"?"都踩一遍', scores: { saibo: 3, laoe: 1 } },
-    { label: 'C', text: '约上固定车队，语音一开就是快乐星球', scores: { yuyin: 3, tianliang: 1 } },
-    { label: 'D', text: '开一局策略游戏，"就玩一回合"', scores: { tianliang: 3, shouku: 1 } }
-  ]},
-  { id: 2, text: '游戏中最让你爽到的瞬间是什么？', options: [
-    { label: 'A', text: '排位决胜局1v3残血反杀，全场扣6', scores: { tianti: 3, shouku: 1 } },
-    { label: 'B', text: '完美产线跑通那一刻，所有数据精准对齐', scores: { chanxian: 3, fangkuai: 1 } },
-    { label: 'C', text: '自己造的建筑被路过玩家截图发帖"这是怎么做到的"', scores: { fangkuai: 3, chanxian: 1 } },
-    { label: 'D', text: '十连三黄蛋，截图发群引爆全群羡慕', scores: { liusiBa: 3, cangshu: 1 } }
-  ]},
-  { id: 3, text: '哪种游戏成就最让你满足？', options: [
-    { label: 'A', text: '无伤通关/最高难度/Boss连战全通', scores: { shouku: 3, tianti: 1 } },
-    { label: 'B', text: '用精妙的战术体系在多人对战中以智取胜', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'C', text: '造出被社区广泛采用的蓝图/攻略/配装方案', scores: { chanxian: 3, fangkuai: 1 } },
-    { label: 'D', text: '零氪全通最难副本，截图发论坛"零氪党的胜利"', scores: { gandi: 3, tianti: 1 } }
-  ]},
-  { id: 4, text: '魂类游戏 Boss 连死 20 次，你会？', options: [
-    { label: 'A', text: '研究招式规律，制定精确对策，"这次一定过"', scores: { tianliang: 3, shouku: 1 } },
-    { label: 'B', text: '越死越兴奋，"再来！这把感觉对了"', scores: { shouku: 3, tianti: 1 } },
-    { label: 'C', text: '检查装备/配装/等级，一定有优化空间', scores: { tianti: 3, chanxian: 1 } },
-    { label: 'D', text: '太难了换游戏——时间宝贵，不受这气', scores: { laoe: 3, yuyin: 1 } }
-  ]},
-  { id: 5, text: '肉鸽类"死后重来"的循环，你什么感受？', options: [
-    { label: 'A', text: '每局全新策略组合，我要试遍所有套路流派', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'B', text: '每次重来都能发现新内容，探索本身就是快乐', scores: { saibo: 3, shouku: 1 } },
-    { label: 'C', text: '攒永久升级，看着自己越来越强的成长感太上头', scores: { gandi: 3, tianti: 1 } },
-    { label: 'D', text: '重复打同样的内容好无聊，不如玩有结局的游戏', scores: { laoe: 3, yuyin: 1 } }
-  ]},
-  { id: 6, text: '你更偏好哪种难度曲线？', options: [
-    { label: 'A', text: '策略深度递增——越想越深，越玩越复杂，上限极高', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'B', text: '高开高走——上来就挑战我，挫败后成长最甜美', scores: { shouku: 3, tianti: 1 } },
-    { label: 'C', text: '适中——有难度但不卡关，我有自己的节奏', scores: { saibo: 3, fangkuai: 1 } },
-    { label: 'D', text: '低压力——最好能调难度，游戏不该制造焦虑', scores: { laoe: 3, cangshu: 1 } }
-  ]},
-  { id: 7, text: '你如何看待"死亡惩罚"（掉魂/掉装备/跑尸/删档）？', options: [
-    { label: 'A', text: '合理的设计，让每一次决策更有分量', scores: { shouku: 3, tianliang: 1 } },
-    { label: 'B', text: '紧张感拉满，这才是沉浸式冒险该有的代价', scores: { saibo: 3, tianti: 1 } },
-    { label: 'C', text: '死就死了，蹲下一把——活着最重要', scores: { laoliu: 3, laoe: 1 } },
-    { label: 'D', text: '太不友好了，游戏应该是放松的', scores: { laoe: 3, cangshu: 1 } }
-  ]},
-  { id: 8, text: '你对游戏内语音/开麦的态度？', options: [
-    { label: 'A', text: '必要工具——快速沟通战术，精简短句不废话', scores: { tianliang: 3, tianti: 1 } },
-    { label: 'B', text: '可有可无——我更喜欢独自沉浸在自己的世界', scores: { chanxian: 3, shouku: 1 } },
-    { label: 'C', text: '必须开！聊天才是游戏的 80% 乐趣', scores: { yuyin: 3, fangkuai: 1 } },
-    { label: 'D', text: '社恐福音——打字就够，能不打字更好', scores: { laoliu: 3, laoe: 1 } }
-  ]},
-  { id: 9, text: '多人游戏中，你通常是什么角色？', options: [
-    { label: 'A', text: '战术指挥——分析局势、制定打法、分配任务', scores: { tianliang: 3, tianti: 1 } },
-    { label: 'B', text: 'Carry位——我来杀穿对面，你们保我就行', scores: { tianti: 3, shouku: 1 } },
-    { label: 'C', text: '气氛组——段子手+DJ，让全队笑着赢（或笑着输）', scores: { yuyin: 3, tianliang: 1 } },
-    { label: 'D', text: '辅助/后勤——默默补资源/造装备，队友在前线冲锋', scores: { fangkuai: 3, chanxian: 1 } }
-  ]},
-  { id: 10, text: '朋友拉你玩一款完全没接触过的游戏类型，你会？', options: [
-    { label: 'A', text: '先看攻略/百科/教学视频，做足功课再上手', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'B', text: '直接开玩！摸索本身就是乐趣，"别剧透我"', scores: { saibo: 3, shouku: 1 } },
-    { label: 'C', text: '来者不拒——朋友玩什么我就玩什么，游戏是其次', scores: { yuyin: 3, fangkuai: 1 } },
-    { label: 'D', text: '如果太复杂/太肝就算了，推荐他们玩我的游戏', scores: { laoe: 3, yuyin: 1 } }
-  ]},
-  { id: 11, text: '你更喜欢哪种游戏世界？', options: [
-    { label: 'A', text: '精密的箱庭关卡——每条捷径、每扇"无法从这一侧打开"的门都是艺术', scores: { shouku: 3, saibo: 1 } },
-    { label: 'B', text: '广袤的开放世界——"看到那座山了吗？你可以爬上去"', scores: { saibo: 3, fangkuai: 1 } },
-    { label: 'C', text: '可改造的沙盒——世界是我的画布，一砖一瓦由我决定', scores: { fangkuai: 3, chanxian: 1 } },
-    { label: 'D', text: '不需要世界——给我一张对战地图/一局排位就够了', scores: { tianti: 3, yuyin: 1 } }
-  ]},
-  { id: 12, text: '你更喜欢哪种叙事方式？', options: [
-    { label: 'A', text: '碎片化叙事（魂类）——从物品描述、环境细节拼凑故事', scores: { shouku: 3, saibo: 1 } },
-    { label: 'B', text: '分支选择（经典角色扮演）——我的选择真正影响世界走向', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'C', text: '玩家自创故事——和朋友们在游戏中即兴创造的回忆', scores: { yuyin: 3, fangkuai: 1 } },
-    { label: 'D', text: '线性叙事——像看一部好电影，沉浸不费脑', scores: { laoe: 3, cangshu: 1 } }
-  ]},
-  { id: 13, text: '你心目中的"神作"更接近哪一款？', options: [
-    { label: 'A', text: '只狼/艾尔登法环——"战胜 Boss 那一刻，手在抖"', scores: { shouku: 3, saibo: 1 } },
-    { label: 'B', text: '文明7/杀戮尖塔2——"再玩一回合，真的最后一回合"', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'C', text: '赛博朋克2077/荒野大镖客2——"通关后像失恋了一样"', scores: { saibo: 3, shouku: 1 } },
-    { label: 'D', text: '异星工厂/戴森球计划——"我妈问我为什么凌晨在画传送带"', scores: { chanxian: 3, fangkuai: 1 } }
-  ]},
-  { id: 14, text: '"肝"和"氪"，你更倾向哪一种？', options: [
-    { label: 'A', text: '该氪就氪，时间比钱值钱——648走你', scores: { liusiBa: 3, cangshu: 1 } },
-    { label: 'B', text: '肝就完了——穷得只剩时间了，命就是游戏币', scores: { gandi: 3, tianti: 1 } },
-    { label: 'C', text: '都不选——适度游戏，过量伤肝又伤钱包', scores: { laoe: 3, laoliu: 1 } },
-    { label: 'D', text: '不肝不氪——但我攒了10万免费钻，策划都怕我', scores: { cangshu: 3, gandi: 1 } }
-  ]},
-  { id: 15, text: '你如何看待游戏中的"刷刷刷"？', options: [
-    { label: 'A', text: '接受，前提是刷的路线/效率需要策略规划', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'B', text: '探索顺带刷可以，纯重复刷没意思——除非风景好', scores: { saibo: 3, laoe: 1 } },
-    { label: 'C', text: '为了建造/制作我愿意刷——材料是作品的血肉', scores: { fangkuai: 3, chanxian: 1 } },
-    { label: 'D', text: '任何形式的"刷"都想弃游——时间太宝贵了', scores: { laoe: 3, cangshu: 1 } }
-  ]},
-  { id: 16, text: '你对 Mod / 创意工坊的态度？', options: [
-    { label: 'A', text: '策略/深度向 Mod——新文明/新卡牌/新机制，扩展上限', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'B', text: '效率向 Mod——自动化插件、数据统计、一键整理', scores: { chanxian: 3, tianliang: 1 } },
-    { label: 'C', text: '语音/社交向 Mod——更多表情动作、更好的开黑体验', scores: { yuyin: 3, fangkuai: 1 } },
-    { label: 'D', text: '皮肤/美化向 Mod——抽不到的老婆就靠 Mod 了', scores: { liusiBa: 3, cangshu: 1 } }
-  ]},
-  { id: 17, text: '如果要花 1000 小时在一款游戏上，你希望花在什么上面？', options: [
-    { label: 'A', text: '磨练技术——从被碾压到无伤通关的蜕变', scores: { shouku: 3, tianti: 1 } },
-    { label: 'B', text: '深度钻研——吃透每一层策略、每一个隐藏机制', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'C', text: '建造奇观——一座让所有人瞠目结舌的史诗级作品', scores: { fangkuai: 3, yuyin: 1 } },
-    { label: 'D', text: '全图鉴收集——每一个角色/每一张卡，一个都不能少', scores: { cangshu: 3, liusiBa: 1 } }
-  ]},
-  { id: 18, text: '你获得一台"完全沉浸式虚拟现实游戏舱"，第一件事？', options: [
-    { label: 'A', text: '进入奇幻开放世界，独自踏上史诗级冒险', scores: { saibo: 3, shouku: 1 } },
-    { label: 'B', text: '进入最大的虚拟社交广场，找朋友一起疯', scores: { yuyin: 3, fangkuai: 1 } },
-    { label: 'C', text: '建一座现实中不可能存在的浮空城市', scores: { fangkuai: 3, chanxian: 1 } },
-    { label: 'D', text: '把所有虚拟道具分类收纳进不同仓库，标签对齐', scores: { cangshu: 3, chanxian: 1 } }
-  ]},
-  { id: 19, text: '一天只剩 30 分钟打游戏，你会？', options: [
-    { label: 'A', text: '开一局肉鸽/策略，"一局只要 30 分钟"（骗自己）', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'B', text: '上线签个到，看看风景，浇浇花，摸摸宠物——够了', scores: { laoe: 3, saibo: 1 } },
-    { label: 'C', text: '排一把竞技——赢了美滋滋下线，输了"不行再来一把"', scores: { tianti: 3, shouku: 1 } },
-    { label: 'D', text: '蹲一把撤离，苟到最后成功撤离——这 30 分钟值了', scores: { laoliu: 3, gandi: 1 } }
-  ]},
-  { id: 20, text: '游戏输了/被虐了，你的第一反应？', options: [
-    { label: 'A', text: '"再来！这次我一定躲过那一招"——复盘→练习→再战', scores: { shouku: 3, tianti: 1 } },
-    { label: 'B', text: '"这游戏的深度比我想象的深"——换思路/换套路再来', scores: { tianliang: 3, chanxian: 1 } },
-    { label: 'C', text: '"我的我的，下把打回来"——秒排下一局，不服就干', scores: { tianti: 3, yuyin: 1 } },
-    { label: 'D', text: '输了就输了呗——切出去看视频/刷手机/换个轻松的游戏', scores: { laoe: 3, laoliu: 1 } }
-  ]}
+  // ===== Phase 1: Screening (6 questions) =====
+  {
+    id: 1, stage: 'screening',
+    text: '周末晚上打开游戏，你最可能做什么？',
+    options: [
+      { label: 'A', text: '打排位/竞技——今天手感好，要上分', scores: { tianti: 3, shouku: 1 } },
+      { label: 'B', text: '探索新地图——每个角落都要踩到', scores: { saibo: 3, laoe: 1 } },
+      { label: 'C', text: '上语音叫朋友——"还有空位快来！"', scores: { yuyin: 3, laoliu: 1 } },
+      { label: 'D', text: '整理背包/商城——清点一下库存', scores: { cangshu: 3, liusiBa: 1 } },
+    ],
+  },
+  {
+    id: 2, stage: 'screening',
+    text: '游戏里最让你有成就感的是？',
+    options: [
+      { label: 'A', text: '终于打过那个虐我无数次的 Boss', scores: { shouku: 3, tianti: 1 } },
+      { label: 'B', text: '产线/基地完美自动运转——省心了', scores: { chanxian: 3, fangkuai: 1 } },
+      { label: 'C', text: '亲手建出一座让人惊叹的建筑', scores: { fangkuai: 3, chanxian: 1 } },
+      { label: 'D', text: '零氪攒够资源——白嫖党的胜利', scores: { gandi: 3, cangshu: 1 } },
+    ],
+  },
+  {
+    id: 3, stage: 'screening',
+    text: '你会因为什么原因沉迷一款游戏？',
+    options: [
+      { label: 'A', text: '深不见底的策略系统——越想越深', scores: { tianliang: 3, chanxian: 1 } },
+      { label: 'B', text: '和真人玩家斗智斗勇——"这个老六"', scores: { laoliu: 3, yuyin: 1 } },
+      { label: 'C', text: '轻松治愈的氛围——解压最重要', scores: { laoe: 3, tianliang: 1 } },
+      { label: 'D', text: '收集/抽卡——"就差这一个了"', scores: { liusiBa: 3, cangshu: 1 } },
+    ],
+  },
+  {
+    id: 4, stage: 'screening',
+    text: '你认为好游戏必须具备什么？',
+    options: [
+      { label: 'A', text: '有挑战性——没有难度的游戏不值得玩', scores: { shouku: 3, tianti: 1 } },
+      { label: 'B', text: '竞技公平——输赢靠实力不靠运气', scores: { tianti: 3, shouku: 1 } },
+      { label: 'C', text: '世界够大——"那边那座山我能去吗？"', scores: { saibo: 3, fangkuai: 1 } },
+      { label: 'D', text: '策略够深——无脑操作没意思', scores: { tianliang: 3, chanxian: 1 } },
+    ],
+  },
+  {
+    id: 5, stage: 'screening',
+    text: '你和朋友一起玩游戏时，通常是什么画风？',
+    options: [
+      { label: 'A', text: '一起研究套路、优化配合', scores: { chanxian: 3, tianliang: 1 } },
+      { label: 'B', text: '各玩各的建造/探索，偶尔串门', scores: { fangkuai: 3, saibo: 1 } },
+      { label: 'C', text: '全程语音聊不停——游戏是聊天背景板', scores: { yuyin: 3, laoliu: 1 } },
+      { label: 'D', text: '互相阴——"我靠你蹲我？"', scores: { laoliu: 3, yuyin: 1 } },
+    ],
+  },
+  {
+    id: 6, stage: 'screening',
+    text: '一天辛苦工作/学习后，打开游戏最想得到什么？',
+    options: [
+      { label: 'A', text: '换个世界散散步——看看风景就好', scores: { laoe: 3, saibo: 1 } },
+      { label: 'B', text: '抽几发——万一出货了呢', scores: { liusiBa: 3, gandi: 1 } },
+      { label: 'C', text: '清日常/活动——资源不能浪费', scores: { cangshu: 3, laoe: 1 } },
+      { label: 'D', text: '刷材料做装备——变强不能停', scores: { gandi: 3, shouku: 1 } },
+    ],
+  },
+
+  // ===== Phase 2: Focused questions (3 per cluster) =====
+  // --- 挑战/硬核 (challenge) ---
+  {
+    id: 7, stage: 'focused', cluster: 'challenge',
+    text: '你更享受哪种挑战过程？',
+    options: [
+      { label: 'A', text: '死磕一个难关直到完美通关', scores: { shouku: 3, tianti: 1 } },
+      { label: 'B', text: '和高手对决，在对抗中提升自己', scores: { tianti: 3, shouku: 1 } },
+      { label: 'C', text: '研究最优打法，用脑子过关', scores: { tianliang: 3, shouku: 1 } },
+      { label: 'D', text: '速通/竞速——和时间赛跑', scores: { tianti: 3, laoliu: 1 } },
+    ],
+  },
+  {
+    id: 8, stage: 'focused', cluster: 'challenge',
+    text: '面对超高难度的 Boss，你的第一反应是？',
+    options: [
+      { label: 'A', text: '不练到完美不罢休——死一百次也要过', scores: { shouku: 3, tianti: 1 } },
+      { label: 'B', text: '查攻略配装备——准备好了再上', scores: { tianliang: 3, shouku: 1 } },
+      { label: 'C', text: '练级刷装备——用等级碾压', scores: { gandi: 3, shouku: 1 } },
+      { label: 'D', text: '直接开干——死了再调整，不服就干', scores: { tianti: 3, shouku: 1 } },
+    ],
+  },
+  {
+    id: 9, stage: 'focused', cluster: 'challenge',
+    text: '游戏中的失败对你意味着什么？',
+    options: [
+      { label: 'A', text: '学习的必经之路——每次失败都在变强', scores: { shouku: 3, tianti: 1 } },
+      { label: 'B', text: '伤自尊——必须立刻赢回来', scores: { tianti: 3, shouku: 1 } },
+      { label: 'C', text: '很正常——从不指望一把过', scores: { laoe: 3, yuyin: 1 } },
+      { label: 'D', text: '队友的问题——不是我菜', scores: { yuyin: 3, laoliu: 1 } },
+    ],
+  },
+
+  // --- 策略/规划 (strategy) ---
+  {
+    id: 10, stage: 'focused', cluster: 'strategy',
+    text: '你更偏好哪种策略玩法？',
+    options: [
+      { label: 'A', text: '回合制/战棋——步步为营，深思熟虑', scores: { tianliang: 3, chanxian: 1 } },
+      { label: 'B', text: '基地/产线规划——效率至上，自动为王', scores: { chanxian: 3, tianliang: 1 } },
+      { label: 'C', text: '资源管理——用最少资源做最多事', scores: { cangshu: 3, tianliang: 1 } },
+      { label: 'D', text: '即时策略——手脑并用，多线操作', scores: { tianti: 3, shouku: 1 } },
+    ],
+  },
+  {
+    id: 11, stage: 'focused', cluster: 'strategy',
+    text: '你在策略游戏里最常做的事？',
+    options: [
+      { label: 'A', text: '研究 Wiki/攻略——寻找最优打法', scores: { tianliang: 3, chanxian: 1 } },
+      { label: 'B', text: '设计自动化流水线——解放双手', scores: { chanxian: 3, tianliang: 1 } },
+      { label: 'C', text: '测试不同流派/套路组合', scores: { saibo: 3, tianliang: 1 } },
+      { label: 'D', text: '堆数据算收益——数字越高越爽', scores: { tianliang: 3, chanxian: 1 } },
+    ],
+  },
+  {
+    id: 12, stage: 'focused', cluster: 'strategy',
+    text: '你如何看待游戏中的"最优解"？',
+    options: [
+      { label: 'A', text: '找到最优解是终极快乐', scores: { tianliang: 3, chanxian: 1 } },
+      { label: 'B', text: '自己做的东西完美运转更爽', scores: { chanxian: 3, tianliang: 1 } },
+      { label: 'C', text: '没有最优解的游戏才是好游戏', scores: { fangkuai: 3, saibo: 1 } },
+      { label: 'D', text: '开心就好——不追求效率', scores: { laoe: 3, yuyin: 1 } },
+    ],
+  },
+
+  // --- 探索/建造 (explore) ---
+  {
+    id: 13, stage: 'focused', cluster: 'explore',
+    text: '在开放世界游戏里，你最喜欢做什么？',
+    options: [
+      { label: 'A', text: '全地图探索——每个角落都要走到', scores: { saibo: 3, fangkuai: 1 } },
+      { label: 'B', text: '建造/改造自己的专属基地', scores: { fangkuai: 3, saibo: 1 } },
+      { label: 'C', text: '拍照——每个场景都是壁纸级', scores: { laoe: 3, saibo: 1 } },
+      { label: 'D', text: '速推主线——世界只是背景板', scores: { tianti: 3, laoliu: 1 } },
+    ],
+  },
+  {
+    id: 14, stage: 'focused', cluster: 'explore',
+    text: '你花在"造东西"上的时间多吗？',
+    options: [
+      { label: 'A', text: '很少——我更想看这个世界本身', scores: { saibo: 3, laoe: 1 } },
+      { label: 'B', text: '很多——造完发社区炫耀', scores: { fangkuai: 3, saibo: 1 } },
+      { label: 'C', text: '建造就是我玩游戏的唯一理由', scores: { fangkuai: 3, chanxian: 1 } },
+      { label: 'D', text: '不造——游戏不是给我当泥瓦匠的', scores: { tianti: 3, shouku: 1 } },
+    ],
+  },
+  {
+    id: 15, stage: 'focused', cluster: 'explore',
+    text: '游戏里出现一座高塔/高山，第一反应是？',
+    options: [
+      { label: 'A', text: '上面一定有宝贝——怎么爬上去？', scores: { saibo: 3, shouku: 1 } },
+      { label: 'B', text: '能不能在那建个基地？位置绝了', scores: { fangkuai: 3, saibo: 1 } },
+      { label: 'C', text: '爬上去看风景——然后截图发朋友圈', scores: { laoe: 3, saibo: 1 } },
+      { label: 'D', text: '标记了以后再说——推主线要紧', scores: { tianti: 3, laoliu: 1 } },
+    ],
+  },
+
+  // --- 社交/语音 (social) ---
+  {
+    id: 16, stage: 'focused', cluster: 'social',
+    text: '游戏的社交功能对你来说？',
+    options: [
+      { label: 'A', text: '核心——没朋友一起玩我早弃游了', scores: { yuyin: 3, laoliu: 1 } },
+      { label: 'B', text: '偶尔组队还行——多数时间单排', scores: { laoliu: 3, yuyin: 1 } },
+      { label: 'C', text: '完全不重要——游戏是我的单人世界', scores: { shouku: 3, saibo: 1 } },
+      { label: 'D', text: '最好别社交——社恐福音', scores: { laoe: 3, cangshu: 1 } },
+    ],
+  },
+  {
+    id: 17, stage: 'focused', cluster: 'social',
+    text: '你在多人游戏里最爽的体验是？',
+    options: [
+      { label: 'A', text: '整活把全队带偏——笑到肚子痛', scores: { yuyin: 3, laoliu: 1 } },
+      { label: 'B', text: '阴到对面——蹲了五分钟等一个倒霉蛋', scores: { laoliu: 3, yuyin: 1 } },
+      { label: 'C', text: '和路人打出职业级配合——默契拉满', scores: { tianliang: 3, tianti: 1 } },
+      { label: 'D', text: '带新手入坑——看他爱上这个游戏', scores: { yuyin: 3, fangkuai: 1 } },
+    ],
+  },
+  {
+    id: 18, stage: 'focused', cluster: 'social',
+    text: '游戏里陌生人加你好友，你通常？',
+    options: [
+      { label: 'A', text: '通过——多一个朋友多一份快乐', scores: { yuyin: 3, fangkuai: 1 } },
+      { label: 'B', text: '先看战绩——强的大腿才通过', scores: { tianti: 3, shouku: 1 } },
+      { label: 'C', text: '忽略——不和陌生人社交', scores: { laoe: 3, cangshu: 1 } },
+      { label: 'D', text: '通过但不说话——当一个隐身好友', scores: { laoliu: 3, yuyin: 1 } },
+    ],
+  },
+
+  // --- 收集/消费 (collect) ---
+  {
+    id: 19, stage: 'focused', cluster: 'collect',
+    text: '你在游戏里花钱最多的是？',
+    options: [
+      { label: 'A', text: '抽卡/开箱——享受不确定的刺激', scores: { liusiBa: 3, cangshu: 1 } },
+      { label: 'B', text: '皮肤/外观——好看就是一切', scores: { liusiBa: 3, cangshu: 1 } },
+      { label: 'C', text: '月卡/通行证——只花性价比最高的', scores: { cangshu: 3, gandi: 1 } },
+      { label: 'D', text: '没花过钱——时间换一切', scores: { gandi: 3, cangshu: 1 } },
+    ],
+  },
+  {
+    id: 20, stage: 'focused', cluster: 'collect',
+    text: '你的游戏背包/仓库通常是什么状态？',
+    options: [
+      { label: 'A', text: '堆满材料——"说不定以后用得上"', scores: { cangshu: 3, gandi: 1 } },
+      { label: 'B', text: '分类整齐——每样东西都有它的位置', scores: { chanxian: 3, cangshu: 1 } },
+      { label: 'C', text: '全图鉴收集——离 100% 就差这一个', scores: { liusiBa: 3, gandi: 1 } },
+      { label: 'D', text: '够用就行——从不囤积', scores: { laoe: 3, tianti: 1 } },
+    ],
+  },
+  {
+    id: 21, stage: 'focused', cluster: 'collect',
+    text: '你怎么看"时间=金钱"在游戏里的体现？',
+    options: [
+      { label: 'A', text: '时间就是钱——氪金买时间最明智', scores: { liusiBa: 3, cangshu: 1 } },
+      { label: 'B', text: '我时间多的是——肝就完了', scores: { gandi: 3, liusiBa: 1 } },
+      { label: 'C', text: '能用时间换来金钱买不到的东西', scores: { gandi: 3, cangshu: 1 } },
+      { label: 'D', text: '都不重要——开心就好', scores: { laoe: 3, yuyin: 1 } },
+    ],
+  },
+
+  // --- 休闲/佛系 (casual) ---
+  {
+    id: 22, stage: 'focused', cluster: 'casual',
+    text: '你玩游戏的根本目的是？',
+    options: [
+      { label: 'A', text: '放松解压——游戏是我的避风港', scores: { laoe: 3, laoliu: 1 } },
+      { label: 'B', text: '探索未知——体验现实中做不到的事', scores: { saibo: 3, laoe: 1 } },
+      { label: 'C', text: '和朋友一起——游戏是社交工具', scores: { yuyin: 3, laoe: 1 } },
+      { label: 'D', text: '挑战自己——看自己能走多远', scores: { shouku: 3, tianti: 1 } },
+    ],
+  },
+  {
+    id: 23, stage: 'focused', cluster: 'casual',
+    text: '遇到游戏里需要肝的活动/任务，你的态度是？',
+    options: [
+      { label: 'A', text: '看心情——想做就做，不做拉倒', scores: { laoe: 3, laoliu: 1 } },
+      { label: 'B', text: '全清——任务列表必须清零', scores: { tianliang: 3, gandi: 1 } },
+      { label: 'C', text: '只做奖励好的——性价比优先', scores: { cangshu: 3, laoe: 1 } },
+      { label: 'D', text: '直接跳过——不想浪费时间', scores: { liusiBa: 3, laoe: 1 } },
+    ],
+  },
+  {
+    id: 24, stage: 'focused', cluster: 'casual',
+    text: '你理想的一次游戏时长是？',
+    options: [
+      { label: 'A', text: '15-30 分钟——随时拿起随时放下', scores: { laoe: 3, laoliu: 1 } },
+      { label: 'B', text: '1-2 小时——刚好沉浸进去', scores: { saibo: 3, shouku: 1 } },
+      { label: 'C', text: '4 小时+——不玩够不罢休', scores: { tianti: 3, gandi: 1 } },
+      { label: 'D', text: '看情况——好玩就一直玩下去', scores: { yuyin: 3, tianliang: 1 } },
+    ],
+  },
 ]
 
+export function getClusterScores(scores) {
+  const clusterScores = {}
+  for (const [key, cluster] of Object.entries(CLUSTERS)) {
+    clusterScores[key] = cluster.types.reduce((sum, t) => sum + (scores[t] || 0), 0)
+  }
+  return clusterScores
+}
+
+export function selectFocusedQuestions(scores, questionsPerCluster = 3) {
+  const clusterScores = getClusterScores(scores)
+  const sorted = Object.entries(clusterScores).sort((a, b) => b[1] - a[1])
+
+  const top = []
+  const topScore = sorted[0][1]
+  top.push(sorted[0][0])
+
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i][1] + 3 >= topScore) {
+      top.push(sorted[i][0])
+    } else {
+      break
+    }
+  }
+
+  const selected = top.slice(0, 2)
+  const focused = []
+  for (const cluster of selected) {
+    const pool = questions.filter(q => q.stage === 'focused' && q.cluster === cluster)
+    const shuffled = [...pool].sort(() => Math.random() - 0.5)
+    focused.push(...shuffled.slice(0, questionsPerCluster))
+  }
+  return focused.sort((a, b) => a.id - b.id)
+}
+
+export function isScreeningComplete(scores) {
+  return Object.values(scores).some(v => v > 0)
+}
+
 export function validateBalance() {
-  const counts = {}
+  const primary = {}
+  const secondary = {}
   questions.forEach(q => {
     q.options.forEach(opt => {
       Object.entries(opt.scores).forEach(([type, score]) => {
-        if (score === 3) counts[type] = (counts[type] || 0) + 1
+        if (score === 3) primary[type] = (primary[type] || 0) + 1
+        else secondary[type] = (secondary[type] || 0) + 1
       })
     })
   })
-  return counts
+  return { primary, secondary }
 }

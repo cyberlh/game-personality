@@ -1,17 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import RadarChart from './RadarChart'
 import ShareCard from './ShareCard'
+import Confetti from './Confetti'
 import { getPersonality } from '../data/personalities'
 
 export default function Result({ result, onRestart }) {
-  const [show, setShow] = useState(false)
   const [showShare, setShowShare] = useState(false)
-  useEffect(() => { setTimeout(() => setShow(true), 100) }, [])
+  const [celebrated, setCelebrated] = useState(false)
+  useEffect(() => {
+    if (result && !celebrated) setCelebrated(true)
+  }, [result, celebrated])
 
   if (!result) {
     return (
-      <div className="relative z-10 min-h-screen flex items-center justify-center">
-        <p className="text-slate-400 text-lg">计算中...</p>
+      <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 rounded-full border-2 border-purple-500 border-t-transparent animate-spin" />
+          <p className="text-sm text-slate-500">分析结果中...</p>
+        </div>
       </div>
     )
   }
@@ -27,79 +33,73 @@ export default function Result({ result, onRestart }) {
   const secondary = personalities[1]
 
   return (
-    <div className={`relative z-10 min-h-screen flex flex-col items-center px-4 py-8
-      transition-all duration-700 ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+    <div className="flex-1 flex flex-col items-center px-4 py-6">
+      <Confetti active={celebrated} />
+      {/* Result badge */}
+      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+        <span className="text-[10px] text-purple-300 font-medium">测试完成</span>
+      </div>
 
-      {/* Result reveal */}
-      <div className="text-center mb-6">
-        <p className="text-slate-400 mb-2">你的游戏人格是</p>
-        <div className="text-6xl mb-3">
-          {primary.emoji}{secondary ? ` ${secondary.emoji}` : ''}
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: primary.color }}>
+      {/* Header */}
+      <div className="text-center mb-5">
+        <p className="text-slate-500 text-xs mb-1.5 tracking-wider uppercase">你的游戏人格是</p>
+        <div className="text-4xl sm:text-5xl mb-2">{primary.emoji}{secondary ? ` ${secondary.emoji}` : ''}</div>
+        <h1 className="text-xl sm:text-2xl font-bold shiny-text" style={{ color: 'transparent' }}>
           {primary.name}{secondary ? ` × ${secondary.name}` : ''}
         </h1>
-        {isHybrid && (
-          <p className="text-sm text-slate-500">混合型人格 — 你兼顾两种玩家特质</p>
-        )}
-        <p className="text-lg text-slate-300 italic mt-2">"{primary.tagline}"</p>
+        {isHybrid && <p className="text-[10px] text-slate-600 mt-0.5">混合型人格 — 两种特质并存</p>}
+        <p className="text-sm text-slate-400 italic mt-2">"{primary.tagline}"</p>
       </div>
 
-      {/* Primary description */}
-      <div className="max-w-md text-center mb-4">
-        <p className="text-slate-400 leading-relaxed">{primary.description}</p>
+      {/* Description */}
+      <div className="bento-card max-w-md w-full mb-3">
+        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{primary.description}</p>
       </div>
 
-      {/* Secondary description for hybrid */}
       {secondary && (
-        <div className="max-w-md text-center mb-4">
-          <div className="text-center mb-2" style={{ color: secondary.color }}>
-            <span className="text-2xl mr-1">{secondary.emoji}</span>
-            <span className="font-bold">{secondary.name}</span>
-          </div>
-          <p className="text-slate-400 leading-relaxed">"{secondary.tagline}"</p>
+        <div className="bento-card max-w-md w-full mb-3">
+          <span className="font-semibold text-xs mr-1" style={{ color: secondary.color }}>{secondary.emoji} {secondary.name}</span>
+          <span className="text-xs text-slate-400 italic">"{secondary.tagline}"</span>
         </div>
       )}
 
-      {/* Radar chart */}
-      <div className="mb-6 w-full max-w-sm">
+      {/* Radar */}
+      <div className="bento-card w-full max-w-[240px] sm:max-w-[280px] flex justify-center mb-3">
         <RadarChart scores={scores} />
       </div>
 
       {/* Strengths & Weaknesses */}
-      <div className="max-w-md w-full grid grid-cols-2 gap-4 mb-6">
-        <div>
-          <h3 className="text-sm text-green-400 mb-2">优势</h3>
+      <div className="grid grid-cols-2 gap-2 w-full max-w-md mb-3">
+        <div className="bento-card">
+          <h3 className="text-[10px] text-green-400/70 mb-2 font-semibold uppercase tracking-wide">优势</h3>
           <ul className="space-y-1">
-            {primary.strengths.map(s => (
-              <li key={s} className="text-sm text-slate-300">✓ {s}</li>
-            ))}
-            {secondary && secondary.strengths.slice(0, 2).map(s => (
-              <li key={s} className="text-sm text-slate-300">✓ {s}</li>
+            {[...primary.strengths, ...(secondary?.strengths.slice(0, 2) || [])].map(s => (
+              <li key={s} className="text-[11px] text-slate-400 flex items-start gap-1">
+                <span className="text-green-400/50 flex-shrink-0">✓</span>
+                <span>{s}</span>
+              </li>
             ))}
           </ul>
         </div>
-        <div>
-          <h3 className="text-sm text-red-400 mb-2">注意</h3>
+        <div className="bento-card">
+          <h3 className="text-[10px] text-red-400/70 mb-2 font-semibold uppercase tracking-wide">注意</h3>
           <ul className="space-y-1">
             {primary.weaknesses.map(w => (
-              <li key={w} className="text-sm text-slate-400">⚡ {w}</li>
+              <li key={w} className="text-[11px] text-slate-500 flex items-start gap-1">
+                <span className="text-red-400/50 flex-shrink-0">⚡</span>
+                {w}
+              </li>
             ))}
           </ul>
         </div>
       </div>
 
-      {/* Recommended games */}
-      <div className="max-w-md w-full mb-8">
-        <h3 className="text-sm text-slate-500 uppercase tracking-wide mb-3">推荐游戏</h3>
-        <div className="flex flex-wrap gap-2">
-          {primary.games.map(game => (
-            <span key={game} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-slate-300">
-              {game}
-            </span>
-          ))}
-          {secondary && secondary.games.slice(0, 3).map(game => (
-            <span key={game} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-slate-300">
+      {/* Games */}
+      <div className="bento-card max-w-md w-full mb-5">
+        <h3 className="text-[10px] text-slate-600 uppercase tracking-wide mb-2 font-semibold">推荐游戏</h3>
+        <div className="flex flex-wrap gap-1.5">
+          {[...primary.games.slice(0, 4), ...(secondary?.games.slice(0, 2) || [])].map(game => (
+            <span key={game} className="px-2.5 py-1 rounded-full text-[11px] text-slate-400 border border-white/[0.07] bg-white/[0.02]">
               {game}
             </span>
           ))}
@@ -107,29 +107,21 @@ export default function Result({ result, onRestart }) {
       </div>
 
       {/* Actions */}
-      <div className="flex gap-3">
-        <button
-          onClick={onRestart}
-          className="px-6 py-2.5 rounded-xl border border-white/20 text-slate-300 hover:bg-white/10 transition-colors"
-        >
+      <div className="flex flex-col sm:flex-row gap-2 w-full max-w-md mb-6">
+        <button onClick={onRestart}
+          className="flex-1 py-2.5 rounded-xl border border-white/15 text-slate-400 text-sm hover:bg-white/5 transition-colors">
           重新测试
         </button>
-        <button
-          onClick={() => setShowShare(!showShare)}
-          className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold hover:from-purple-500 hover:to-blue-500 transition-colors"
-        >
+        <button onClick={() => setShowShare(!showShare)}
+          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg shadow-purple-500/20">
           {showShare ? '收起分享' : '分享结果'}
         </button>
       </div>
 
-      {/* Share card */}
+      {/* Share */}
       {showShare && (
-        <div className="mb-8 w-full">
-          <ShareCard
-            personality={primary}
-            scores={scores}
-            secondary={secondary}
-          />
+        <div className="w-full max-w-sm mb-6">
+          <ShareCard personality={primary} scores={scores} secondary={secondary} />
         </div>
       )}
     </div>
