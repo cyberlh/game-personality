@@ -97,7 +97,7 @@ export default function Landing({ onStart, onStats }) {
       {/* Stats link */}
       <motion.div variants={item} className="mt-4">
         <button onClick={onStats}
-          className="text-xs text-slate-600 hover:text-slate-400 transition-colors underline underline-offset-2 decoration-white/10">
+          className="min-h-[44px] px-4 text-xs text-slate-600 hover:text-slate-400 active:text-slate-300 transition-colors underline underline-offset-2 decoration-white/10">
           查看所有人格分布统计 →
         </button>
       </motion.div>

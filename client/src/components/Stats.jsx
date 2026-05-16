@@ -67,16 +67,16 @@ export default function Stats({ onStart, onBack }) {
           return (
             <motion.div
               key={p.id}
-              className="bento-card !py-2.5 !px-3"
+              className="bento-card !py-3 !px-3.5"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.35, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <span className="text-base">{p.emoji}</span>
-                <span className="text-xs text-slate-300 font-medium flex-1">{p.name}</span>
-                <span className="text-xs text-slate-500 tabular-nums">{p.count.toLocaleString()}</span>
-                <span className="text-[10px] text-slate-600 w-10 text-right">{totalPct}%</span>
+              <div className="flex items-center gap-3 mb-1.5">
+                <span className="text-xl sm:text-2xl">{p.emoji}</span>
+                <span className="text-sm sm:text-base text-slate-300 font-medium flex-1">{p.name}</span>
+                <span className="text-sm text-slate-500 tabular-nums">{p.count.toLocaleString()}</span>
+                <span className="text-xs text-slate-600 w-10 text-right">{totalPct}%</span>
               </div>
               <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <motion.div

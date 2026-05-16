@@ -13,10 +13,10 @@ export default function Quiz({ question, currentQuestion, totalQuestions, select
             disabled={currentQuestion === 0 || transitioning}
             whileHover={currentQuestion > 0 && !transitioning ? { x: -2 } : {}}
             whileTap={currentQuestion > 0 && !transitioning ? { scale: 0.95 } : {}}
-            className={`text-sm px-3 py-1.5 rounded-lg transition-colors ${
+            className={`min-h-[44px] px-4 py-2 rounded-lg transition-colors ${
               currentQuestion === 0 || transitioning
                 ? 'text-slate-600 cursor-not-allowed'
-                : 'text-slate-400 hover:text-white hover:bg-white/10'
+                : 'text-slate-400 active:text-white hover:text-white hover:bg-white/10'
             }`}
           >
             ← 上一题

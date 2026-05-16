@@ -21,7 +21,7 @@ export default function App() {
     <div className="relative min-h-screen bg-[#0f0f23] text-white font-sans flex flex-col">
       <ParticleBackground />
       <Header />
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col safe-bottom">
         <AnimatePresence mode="wait">
           {quiz.screen === 'landing' && (
             <motion.div key="landing" className="flex-1 flex flex-col" {...pageVariants}>

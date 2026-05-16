@@ -37,7 +37,7 @@ export default function Result({ result, onRestart }) {
       <Confetti active={celebrated} />
       {/* Result badge */}
       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
-        <span className="text-[10px] text-purple-300 font-medium">测试完成</span>
+        <span className="text-[11px] sm:text-xs text-purple-300 font-medium">测试完成</span>
       </div>
 
       {/* Header */}
@@ -47,19 +47,19 @@ export default function Result({ result, onRestart }) {
         <h1 className="text-xl sm:text-2xl font-bold shiny-text" style={{ color: 'transparent' }}>
           {primary.name}{secondary ? ` × ${secondary.name}` : ''}
         </h1>
-        {isHybrid && <p className="text-[10px] text-slate-600 mt-0.5">混合型人格 — 两种特质并存</p>}
+        {isHybrid && <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">混合型人格 — 两种特质并存</p>}
         <p className="text-sm text-slate-400 italic mt-2">"{primary.tagline}"</p>
       </div>
 
       {/* Description */}
       <div className="bento-card max-w-md w-full mb-3">
-        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{primary.description}</p>
+        <p className="text-sm sm:text-base text-slate-400 leading-relaxed">{primary.description}</p>
       </div>
 
       {secondary && (
         <div className="bento-card max-w-md w-full mb-3">
-          <span className="font-semibold text-xs mr-1" style={{ color: secondary.color }}>{secondary.emoji} {secondary.name}</span>
-          <span className="text-xs text-slate-400 italic">"{secondary.tagline}"</span>
+          <span className="font-semibold text-xs sm:text-sm mr-1" style={{ color: secondary.color }}>{secondary.emoji} {secondary.name}</span>
+          <span className="text-xs sm:text-sm text-slate-400 italic">"{secondary.tagline}"</span>
         </div>
       )}
 
@@ -71,22 +71,22 @@ export default function Result({ result, onRestart }) {
       {/* Strengths & Weaknesses */}
       <div className="grid grid-cols-2 gap-2 w-full max-w-md mb-3">
         <div className="bento-card">
-          <h3 className="text-[10px] text-green-400/70 mb-2 font-semibold uppercase tracking-wide">优势</h3>
-          <ul className="space-y-1">
+          <h3 className="text-[11px] sm:text-xs text-green-400/70 mb-2 font-semibold uppercase tracking-wide">优势</h3>
+          <ul className="space-y-1.5">
             {[...primary.strengths, ...(secondary?.strengths.slice(0, 2) || [])].map(s => (
-              <li key={s} className="text-[11px] text-slate-400 flex items-start gap-1">
-                <span className="text-green-400/50 flex-shrink-0">✓</span>
+              <li key={s} className="text-xs sm:text-sm text-slate-400 flex items-start gap-1.5">
+                <span className="text-green-400/50 flex-shrink-0 mt-0.5">✓</span>
                 <span>{s}</span>
               </li>
             ))}
           </ul>
         </div>
         <div className="bento-card">
-          <h3 className="text-[10px] text-red-400/70 mb-2 font-semibold uppercase tracking-wide">注意</h3>
-          <ul className="space-y-1">
+          <h3 className="text-[11px] sm:text-xs text-red-400/70 mb-2 font-semibold uppercase tracking-wide">注意</h3>
+          <ul className="space-y-1.5">
             {primary.weaknesses.map(w => (
-              <li key={w} className="text-[11px] text-slate-500 flex items-start gap-1">
-                <span className="text-red-400/50 flex-shrink-0">⚡</span>
+              <li key={w} className="text-xs sm:text-sm text-slate-500 flex items-start gap-1.5">
+                <span className="text-red-400/50 flex-shrink-0 mt-0.5">⚡</span>
                 {w}
               </li>
             ))}
@@ -96,10 +96,10 @@ export default function Result({ result, onRestart }) {
 
       {/* Games */}
       <div className="bento-card max-w-md w-full mb-5">
-        <h3 className="text-[10px] text-slate-600 uppercase tracking-wide mb-2 font-semibold">推荐游戏</h3>
-        <div className="flex flex-wrap gap-1.5">
+        <h3 className="text-[11px] sm:text-xs text-slate-600 uppercase tracking-wide mb-2.5 font-semibold">推荐游戏</h3>
+        <div className="flex flex-wrap gap-2">
           {[...primary.games.slice(0, 4), ...(secondary?.games.slice(0, 2) || [])].map(game => (
-            <span key={game} className="px-2.5 py-1 rounded-full text-[11px] text-slate-400 border border-white/[0.07] bg-white/[0.02]">
+            <span key={game} className="px-3 py-1.5 rounded-full text-xs sm:text-sm text-slate-400 border border-white/[0.07] bg-white/[0.02]">
               {game}
             </span>
           ))}
