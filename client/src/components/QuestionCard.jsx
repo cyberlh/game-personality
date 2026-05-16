@@ -12,7 +12,22 @@ export default function QuestionCard({ question, selectedOption, onSelect }) {
         exit={{ opacity: 0, y: -20, rotateX: 5, scale: 0.97 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="glass-strong rounded-xl sm:rounded-2xl p-5 sm:p-8 mb-4">
+        <motion.div
+          className="glass-strong rounded-2xl p-5 sm:p-8 mb-4"
+          animate={{ y: [0, -3, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          {/* Stage badge */}
+          <div className="text-center mb-5">
+            <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium ${
+              question.stage === 'screening'
+                ? 'text-purple-300 bg-purple-500/10 border border-purple-500/20'
+                : 'text-blue-300 bg-blue-500/10 border border-blue-500/20'
+            }`}>
+              {question.stage === 'screening' ? '筛选阶段' : '深度分析'}
+            </span>
+          </div>
+
           {/* Question statement */}
           <motion.p
             className="text-base sm:text-lg md:text-xl font-bold text-center text-white leading-relaxed mb-8"
@@ -35,7 +50,7 @@ export default function QuestionCard({ question, selectedOption, onSelect }) {
               disabled={selectedOption !== null}
             />
           </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   )

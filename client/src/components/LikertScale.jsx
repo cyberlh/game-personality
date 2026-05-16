@@ -22,34 +22,38 @@ export default function LikertScale({ value, onChange, disabled }) {
         {/* Track line */}
         <div className="absolute left-[10%] right-[10%] h-0.5 bg-white/10 rounded-full" />
 
-        {LEVELS.map((level, i) => {
+        {LEVELS.map((level) => {
           const isSelected = value === level.value
           return (
             <motion.button
               key={level.value}
               onClick={() => !disabled && onChange(level.value)}
               disabled={disabled}
-              className="relative z-10 flex flex-col items-center gap-1"
+              className="relative z-10 flex flex-col items-center gap-1.5"
+              whileHover={disabled ? {} : { scale: 1.08 }}
               whileTap={disabled ? {} : { scale: 0.9 }}
             >
               {/* Dot */}
               <motion.div
-                className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 flex items-center justify-center
+                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 flex items-center justify-center
                   transition-colors duration-200 bg-[#0f0f23]
                   ${isSelected
-                    ? 'border-purple-400 shadow-lg shadow-purple-500/20'
-                    : 'border-white/15 hover:border-purple-400/50'
+                    ? 'border-purple-400 shadow-lg shadow-purple-500/25'
+                    : 'border-white/15 hover:border-purple-400/40 cursor-pointer'
                   }
-                  ${disabled ? 'cursor-default' : 'cursor-pointer'}
+                  ${disabled ? 'cursor-default' : ''}
                 `}
                 animate={isSelected ? { scale: 1.12 } : { scale: 1 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 15 }}
               >
                 <motion.div
-                  className={`w-3 h-3 rounded-full transition-colors duration-200
-                    ${isSelected ? 'bg-purple-400' : 'bg-white/15'}
+                  className={`w-3.5 h-3.5 rounded-full transition-all duration-200
+                    ${isSelected
+                      ? 'bg-purple-400 shadow-sm shadow-purple-400/50'
+                      : 'bg-white/15'
+                    }
                   `}
-                  animate={isSelected ? { scale: 1.2 } : { scale: 1 }}
+                  animate={isSelected ? { scale: 1.3 } : { scale: 1 }}
                 />
               </motion.div>
 
